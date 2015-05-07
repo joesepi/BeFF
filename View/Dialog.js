@@ -30,6 +30,8 @@ define([
       .on('click', '.js-disabled', false)
       // "annotate" the event
       .on('click touchend', function(e) {
+        // guard against no original event when called programmatically
+        e.originalEvent = e.originalEvent || {};
         e.originalEvent._view = this;
       }.bind(this));
     },
